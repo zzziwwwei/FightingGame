@@ -7,10 +7,13 @@ namespace GameData
     public class UserData
     {
         string username;
+        public readonly int user_id;
+
         string token;
-        public UserData(string username, string token)
+        public UserData(string username,int user_id ,string token)
         {
             this.username = username;
+            this.user_id = user_id;
             this.token = token;
         }
         public class AccountData

@@ -1,11 +1,17 @@
 
 using UnityEngine;
 using GameData;
+using Palmmedia.ReportGenerator.Core.Common;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
+using System;
 namespace GameSystem
 {
+
     public class DataManager : MonoBehaviour
     {
-        
+
         private static DataManager _instance;
         public static DataManager Instance
         {
@@ -32,12 +38,24 @@ namespace GameSystem
             }
             DontDestroyOnLoad(this.gameObject);
         }
-        
-        GameData.UserData userData;
-        GameData.GameLog gameLog;
-        void LoadData(){
 
+        GameData.UserData userData;
+        GameData.PlayerData playerData;
+        GameData.GameLog gameLog;
+       
+        void Start()
+        {
+           
+        }
+
+      
+
+        void LoadData()
+        {
+            userData = new("", 1, "token");
+            playerData = new();
             gameLog = new();
+            gameLog.AddLog(userData.user_id);
         }
 
 
